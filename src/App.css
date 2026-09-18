@@ -32,6 +32,30 @@
   from {
     transform: rotate(0deg);
   }
+  /* Đảm bảo toàn bộ khung chứa không vượt quá màn hình điện thoại */
+.photobooth-container {
+  width: 100%;
+  max-width: 600px; /* Trên máy tính tối đa 600px, trên điện thoại tự co giãn 100% */
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box; /* Tránh việc padding làm tràn viền */
+}
+
+/* Đảm bảo camera (video) và ảnh chụp (canvas/img) co giãn theo khung */
+video, canvas, img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Sử dụng Media Query nếu trên điện thoại cần chỉnh lại lề hoặc cách sắp xếp nút bấm */
+@media screen and (max-width: 768px) {
+  .button-group {
+    flex-direction: column; /* Đổi nút bấm từ nằm ngang sang dọc cho dễ bấm trên điện thoại */
+    gap: 10px;
+  }
+}
   to {
     transform: rotate(360deg);
   }
